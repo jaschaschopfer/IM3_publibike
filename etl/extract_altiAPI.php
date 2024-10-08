@@ -2,7 +2,7 @@
 
 function extractElevationData($latitude, $longitude) {
     // Construct the URL with dynamic coordinates
-    $url = "https://www.elevation-api.eu/v1/elevation/$latitude/$longitude";
+    $url = "https://www.elevation-api.eu/v1/elevation/$latitude/$longitude?json";
 
     // Initialize a cURL session
     $ch = curl_init($url);
@@ -23,8 +23,6 @@ function extractElevationData($latitude, $longitude) {
 
     // Close the cURL session
     curl_close($ch);
-
-    var_dump($response);
 
     // Decode the JSON response and return it
     return json_decode($response, true);

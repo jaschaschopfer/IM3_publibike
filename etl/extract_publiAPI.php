@@ -20,6 +20,4 @@ function extractPubliData() {
     return json_decode($response, true);
 }
 
-// Gibt die Daten zurück, wenn dieses Skript eingebunden ist
-return extractPubliData();
 ?>

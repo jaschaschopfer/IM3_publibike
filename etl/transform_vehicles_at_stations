@@ -1,0 +1,9 @@
+<?php
+
+// TO BE CALLED ONCE EVERY HOUR TO UPDATE THE DATABASE TABLE 'vehicles_at_stations'
+
+require_once('extract_publiAPI.php');
+
+// Count for each API-ID of database table 'stations' the number of vehicles
+
+?>
