@@ -1,0 +1,126 @@
+/* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #faf3ec;
+    color: #4f3d33;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: #5c5148;
+}
+
+.intro {
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.graph {
+    margin-bottom: 40px;
+}
+
+.search-box input {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.graph-container {
+    margin-bottom: 20px;
+}
+
+.graph-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.time-selector {
+    margin-bottom: 10px;
+}
+
+.time-selector .slider {
+    width: 80%;
+    height: 6px;
+    background-color: #d3d3d3;
+    outline: none;
+    margin: 20px 0;
+}
+
+.time-selector .time {
+    font-size: 14px;
+    margin: 0 10px;
+}
+
+.date-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.date-selector button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #4f3d33;
+    cursor: pointer;
+}
+
+.date-selector span {
+    font-size: 18px;
+    margin: 0 20px;
+}
+
+.conclusion h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #5c5148;
+    margin-bottom: 10px;
+}
+
+.conclusion p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 36px;
+    }
+
+    .search-box input {
+        width: 100%;
+    }
+
+    .graph-container img {
+        width: 100%;
+    }
+
+    .time-selector .slider {
+        width: 100%;
+    }
+}
