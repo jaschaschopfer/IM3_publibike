@@ -2,9 +2,9 @@
 
 // Include the configuration file to establish a database connection
 require_once('config.php');
-$transformedData=require_once('transform_stations.php');
+require_once('transform_stations.php');
 
-var_dump(array_slice($transformedData, 0, 5)); // Debugging: view the first 5 entries
+$transformedData = transformStationsData();  // Calls the function of the transform_stations.php file
 
 // Loop through each transformed station and write it to the database
 foreach ($transformedData as $stationData) {
