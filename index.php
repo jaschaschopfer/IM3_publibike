@@ -7,6 +7,11 @@
     <title>Wo sind die Publibikes hin?</title>
     <link rel="stylesheet" href="/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include jQuery for easier date and time manipulation -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include jQuery UI for the date picker -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
     <main class="container">
@@ -32,6 +37,28 @@
 
             <!-- Chart.js Canvas -->
             <canvas id="altitudeChart" width="900" height="400"></canvas>
+        </section>
+
+        <!-- Date and Time Picker Section -->
+        <section class="date-time-selector" aria-labelledby="date-time-heading">
+            <h2 id="date-time-heading" class="visually-hidden">Datum und Zeit auswählen</h2>
+
+            <!-- Play Button and Slider Container -->
+            <div class="controls" style="display: flex; align-items: center; width: 900px;">
+                <!-- Play/Stop Button -->
+                <button id="play-btn" style="height: 40px; width: 40px;">▶</button> <!-- Default is Play icon -->
+
+                <!-- Time Slider -->
+                <input type="range" id="time-slider" min="0" max="95" value="0" style="flex: 1; height: 40px;">
+                <span id="time-label" style="margin-left: 10px;">00:00</span>
+            </div>
+
+            <!-- Date Picker -->
+            <article class="date-selector">
+                <button id="prev-day">←</button>
+                <input type="text" id="date-picker" value="Pick a date">
+                <button id="next-day">→</button>
+            </article>
         </section>
 
         <!-- Conclusion / Call to Action Section -->

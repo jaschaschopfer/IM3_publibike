@@ -12,7 +12,7 @@ if (isset($_GET['timestamp'])) {
     try {
         // SQL query to get the nearest vehicle data for each station at the provided timestamp (ignoring seconds)
         $sql = "
-            SELECT s.name, s.altitude, vas.timestamp, vas.ebikes_count, vas.velos_count
+            SELECT s.name, s.altitude, s.latitude, vas.timestamp, vas.ebikes_count, vas.velos_count
             FROM vehicles_at_station vas
             INNER JOIN stations s ON vas.station_id = s.ID
             WHERE vas.timestamp = (
