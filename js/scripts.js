@@ -6,9 +6,57 @@ $("#date-picker").datepicker({
     defaultDate: "2024-10-10"
 });
 
-let chart; // Global variable to store the chart instance
-let playInterval = null; // Interval ID for the play functionality
-let isPlaying = false; // Flag to track whether the play button is active
+// Get the current date and time
+const currentDate = new Date();
+
+// Function to round the current time to the nearest previous quarter-hour
+function getNearestQuarterHour(date) {
+    const minutes = date.getMinutes();
+    const quarterHour = Math.floor(minutes / 15) * 15; // Round down to nearest quarter-hour
+    date.setMinutes(quarterHour);
+    date.setSeconds(0);
+    return date;
+}
+
+// Get the nearest quarter-hour and set it as the default time
+const nearestQuarterHour = getNearestQuarterHour(new Date()); // Get current time rounded to the nearest previous quarter-hour
+const defaultHour = nearestQuarterHour.getHours();
+const defaultMinutes = nearestQuarterHour.getMinutes();
+const defaultSliderValue = (defaultHour * 60 + defaultMinutes) / 15; // Convert time to slider value (15-minute intervals)
+
+// Set the slider range from 0 to 95 for 15-minute intervals in a 24-hour period
+$("#time-slider").attr("min", 0).attr("max", 95).attr("value", 0); // Initial value at 00:00
+
+// Function to format the date as "DD.MM.YYYY"
+function formatDateForDisplay(date) {
+    const day = ("0" + date.getDate()).slice(-2); // Add leading zero to day
+    const month = ("0" + (date.getMonth() + 1)).slice(-2); // Add leading zero and adjust month (0-based)
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`; // Format the date as "YYYY-MM-DD"
+}
+
+// Update the date picker and time label with the current date and time
+function initializeDateTime() {
+    // Get the current date and the nearest previous quarter-hour
+    const nearestQuarterHour = getNearestQuarterHour(new Date());
+
+    // Set the time label to the nearest quarter-hour
+    const defaultHour = nearestQuarterHour.getHours();
+    const defaultMinutes = nearestQuarterHour.getMinutes();
+    const defaultSliderValue = (defaultHour * 60 + defaultMinutes) / 15; // Calculate slider value based on 15-minute intervals
+    updateTimeLabel(defaultSliderValue); // Set the time label
+    $("#time-slider").val(defaultSliderValue); // Set the time slider value
+
+    // Set the date picker to the current date in "DD.MM.YYYY" format
+    const formattedDate = formatDateForDisplay(new Date()); // Format the current date as DD.MM.YYYY
+    $("#date-picker").val(formattedDate); // Update the date picker value
+}
+
+// Set the initial time label to the current time rounded to the nearest quarter-hour
+updateTimeLabel(defaultSliderValue);
+// Call this function to initialize date and time when the page loads
+initializeDateTime();
+updateSliderMax(); // Update the slider max based on today's time
 
 // Function to update the time label and convert slider value to 15-minute intervals
 function updateTimeLabel(value) {
@@ -17,15 +65,6 @@ function updateTimeLabel(value) {
     const minutes = totalMinutes % 60; // Get remaining minutes
     const formattedTime = `${("0" + hours).slice(-2)}:${("0" + minutes).slice(-2)}`; // Format time with leading zeroes
     $("#time-label").text(formattedTime); // Update the time label next to the slider
-}
-
-// Set the slider range from 0 to 95 for 15-minute intervals in a 24-hour period
-$("#time-slider").attr("min", 0).attr("max", 95).attr("value", 0); // Initial value at 00:00
-
-// Function to clear the canvas before rendering a new chart
-function resetCanvas() {
-    $('#altitudeChart').remove(); // Remove the canvas element
-    $('.graph-section').append('<canvas id="altitudeChart" width="900" height="400"></canvas>'); // Add a new canvas element
 }
 
 // Function to update the slider max based on today's time
@@ -50,9 +89,22 @@ function updateSliderMax() {
     }
 }
 
+
+
+let chart; // Global variable to store the chart instance
+let playInterval = null; // Interval ID for the play functionality
+let isPlaying = false; // Flag to track whether the play button is active
+
+// Function to clear the canvas before rendering a new chart
+function resetCanvas() {
+    $('#altitudeChart').remove(); // Remove the canvas element
+    $('.graph-section').append('<canvas id="altitudeChart" width="900" height="400"></canvas>'); // Add a new canvas element
+}
+
 // Function to fetch and update the chart data based on date and time
 function fetchData() {
     const date = $("#date-picker").val(); // Get the selected date from the date picker
+    console.log(date);
     const timeValue = $("#time-slider").val(); // Get the slider value (0-95 for 15-minute intervals)
     const totalMinutes = timeValue * 15; // Convert slider value to total minutes
     const hours = Math.floor(totalMinutes / 60); // Convert to hours
@@ -68,19 +120,20 @@ function fetchData() {
         const stationNames = jsonData.map(item => item.name); // X-axis (stations)
         const altitudes = jsonData.map(item => item.altitude); // Y-axis (altitude)
         const radiusMultiplier = 1; // Multiplier for scaling radius
+        const radiusBase = 1;   // Base radius for circles
 
         // Velos data (green circles)
         const velosData = jsonData.map((item, index) => ({
             x: index + 1, // Distribute stations equally on the X-axis
             y: item.altitude,
-            r: item.velos_count * radiusMultiplier // Radius scales with velos count
+            r: item.velos_count * radiusMultiplier + radiusBase, // Radius scales with velos count
         }));
 
         // E-Bikes data (yellow circles)
         const ebikesData = jsonData.map((item, index) => ({
             x: index + 1, // Distribute stations equally on the X-axis
             y: item.altitude,
-            r: item.ebikes_count * radiusMultiplier // Radius scales with ebikes count
+            r: item.ebikes_count * radiusMultiplier + radiusBase, // Radius scales with ebikes count
         }));
 
         // Check if the chart already exists
@@ -152,7 +205,7 @@ function fetchData() {
                             callbacks: {
                                 label: function(context) {
                                     const datasetLabel = context.dataset.label;
-                                    const count = context.raw.r / radiusMultiplier; // Reverse calculation for count from radius
+                                    const count = (context.raw.r - radiusBase) / radiusMultiplier; // Reverse calculation for count from radius
                                     return `${datasetLabel}: ${count} (${context.raw.y} m)`;
                                 }
                             }

@@ -8,11 +8,11 @@ header('Content-Type: application/json');
 // Get the input timestamp from the URL query string (GET) without seconds
 if (isset($_GET['timestamp'])) {
     $inputTimestamp = $_GET['timestamp']; // Expected format: 'YYYY-MM-DD HH:MM'
-
+    
     try {
         // SQL query to get the nearest vehicle data for each station at the provided timestamp (ignoring seconds)
         $sql = "
-            SELECT s.name, s.altitude, s.latitude, vas.timestamp, vas.ebikes_count, vas.velos_count
+            SELECT s.name, s.altitude, s.longitude, s.latitude, vas.timestamp, vas.ebikes_count, vas.velos_count
             FROM vehicles_at_station vas
             INNER JOIN stations s ON vas.station_id = s.ID
             WHERE vas.timestamp = (
@@ -22,9 +22,11 @@ if (isset($_GET['timestamp'])) {
                 ORDER BY ABS(TIMESTAMPDIFF(SECOND, vas_inner.timestamp, :timestamp)) ASC
                 LIMIT 1
             )
-            ORDER BY s.altitude ASC;  -- Order the result by altitude (low to high)
+            AND s.longitude BETWEEN 7.415539 AND 7.475480
+            AND s.latitude BETWEEN 46.935725 AND 46.964898
+            
+            ORDER BY s.latitude ASC;  -- Order the result by altitude (low to high)
         ";
-
 
         // Prepare the statement
         $stmt = $pdo->prepare($sql);
