@@ -232,6 +232,15 @@ function fetchData() {
 // Fetch data initially when the page loads
 fetchData();
 
+
+
+
+
+
+
+
+
+// TRIGGERS FOR CHART RELOAD (DATE PICKER, TIME SLIDER, PREV/NEXT DAY BUTTONS)
 // Fetch new data whenever the time slider changes (real-time with `input` event)
 $("#time-slider").on("input", function() {
     const sliderValue = $(this).val();
@@ -289,3 +298,14 @@ $("#play-btn").on("click", function() {
         isPlaying = false;
     }
 });
+
+
+
+
+
+
+
+
+
+
+// next chapter
