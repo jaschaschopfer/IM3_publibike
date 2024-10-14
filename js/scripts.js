@@ -1,9 +1,10 @@
+//DATE PICKER AND TIME SLIDER FUNCTIONALITY
 // Initialize the Date Picker (jQuery UI)
 $("#date-picker").datepicker({
     dateFormat: "yy-mm-dd", // Format the date as YYYY-MM-DD for the fetch request
     minDate: new Date(2024, 9, 10, 10, 15), // Disable dates before 2024-10-10 10:15
     maxDate: new Date(), // Disable dates after today
-    defaultDate: "2024-10-10"
+    defaultDate: "2024-10-10"   // Set the default date to 2024-10-10 in case somehow nothing is selected
 });
 
 // Get the current date and time
@@ -52,12 +53,6 @@ function initializeDateTime() {
     $("#date-picker").val(formattedDate); // Update the date picker value
 }
 
-// Set the initial time label to the current time rounded to the nearest quarter-hour
-updateTimeLabel(defaultSliderValue);
-// Call this function to initialize date and time when the page loads
-initializeDateTime();
-updateSliderMax(); // Update the slider max based on today's time
-
 // Function to update the time label and convert slider value to 15-minute intervals
 function updateTimeLabel(value) {
     const totalMinutes = value * 15; // Each slider step represents 15 minutes
@@ -89,8 +84,22 @@ function updateSliderMax() {
     }
 }
 
+// Set the initial time label to the current time rounded to the nearest quarter-hour
+updateTimeLabel(defaultSliderValue);
+// Call this function to initialize date and time when the page loads
+initializeDateTime();
+updateSliderMax(); // Update the slider max based on today's time
 
 
+
+
+
+
+
+
+
+
+// CHART FUNCTIONALITY
 let chart; // Global variable to store the chart instance
 let playInterval = null; // Interval ID for the play functionality
 let isPlaying = false; // Flag to track whether the play button is active
@@ -146,7 +155,7 @@ function fetchData() {
             chart.data.datasets[0].data = velosData; // Update Velos data
             chart.data.datasets[1].data = ebikesData; // Update Ebikes data
 
-            // Explicitly set the visibility of Velos and Ebikes based on their previous state
+            // Explicitly set the visibility of Velos and Ebikes based on their previous state ((DEBUG OF RESETTING VISIBILITY WHEN CHANGING TIME))
             chart.data.datasets[0].hidden = velosHidden;
             chart.data.datasets[1].hidden = ebikesHidden;
 
@@ -219,11 +228,6 @@ function fetchData() {
         console.error('Error fetching data:', error);
     });
 }
-
-
-
-
-
 
 // Fetch data initially when the page loads
 fetchData();
