@@ -7,22 +7,22 @@
 
 body {
     font-family: 'League Spartan', sans-serif;
-    line-height: 1.8; /* Erhöht den Zeilenabstand */
+    line-height: 1.8; /* Increases line spacing */
     background-color: #faf3ec;
     color: #4f3d33;
-    padding: 40px; /* Mehr Padding für den Body */
+    padding: 40px; /* Adds more padding to the body */
     margin: 0;
 }
 
 section {
-    margin: 80px 0; /* Viel mehr Abstand zwischen den Sektionen */
+    margin: 80px 0; /* Adds more spacing between sections */
 }
 
 .container {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    padding: 0 40px; /* Grösseres Padding für den Container */
+    padding: 0 40px; /* Adds more padding to the container */
 }
 
 .site-header h1 {
@@ -30,7 +30,7 @@ section {
     font-size: 128px;
     font-weight: bold;
     color: #5c5148;
-    margin-bottom: 80px; /* Mehr Abstand unter dem Titel */
+    margin-bottom: 80px; /* Adds more space under the title */
     letter-spacing: -2px; /* Reduces the space between letters */
     line-height: 0.9;     /* Reduces the vertical space between lines */
     text-align: center;   /* Centers the text */
@@ -38,13 +38,13 @@ section {
 }
 
 .intro {
-    margin-bottom: 60px; /* Grösserer Abstand nach der Einleitung */
+    margin-bottom: 60px; /* Adds more space after the introduction */
     font-size: 18px;
 }
 
 .graph-section {
     width: 100%;
-    margin-bottom: 60px; /* Mehr Abstand unter dem Graphen */
+    margin-bottom: 60px; /* Adds more space below the graph */
 }
 
 #altitudeChart {
@@ -57,7 +57,7 @@ section {
     width: 100%; /* Make the controls container full width */
     max-width: 100%; /* Prevent overflow */
     padding: 0; /* Remove any extra padding */
-    margin-bottom: 60px; /* Mehr Abstand zwischen den Controls und den anderen Elementen */
+    margin-bottom: 60px; /* Adds more space between controls and other elements */
 }
 
 .controls button {
@@ -71,15 +71,16 @@ section {
     height: 40px;
     width: 100%; /* Set slider width to 100% */
     max-width: 100%; /* Prevent overflow */
-    margin: 0 20px; /* Grösserer Abstand zwischen Button und Slider */
+    margin: 0 20px; /* Adds more space between button and slider */
+    
 }
 
 .date-selector {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Mehr Abstand zwischen den Buttons */
-    margin-bottom: 80px; /* Mehr Abstand nach der Date-Selector-Sektion */
+    gap: 20px; /* Adds more space between buttons */
+    margin-bottom: 80px; /* Adds more space after the date selector section */
 }
 
 .date-selector button {
@@ -91,25 +92,25 @@ section {
 }
 
 .conclusion h2 {
-    font-size: 32px; /* Grössere Schrift für mehr Aufmerksamkeit */
+    font-size: 32px; /* Larger font size for more emphasis */
     font-weight: bold;
     color: #5c5148;
-    margin-bottom: 40px; /* Mehr Abstand unter den Überschriften */
+    margin-bottom: 40px; /* Adds more space under the headings */
 }
 
 .conclusion p {
-    margin-bottom: 40px; /* Grösserer Abstand unter den Absätzen */
+    margin-bottom: 40px; /* Adds more space under paragraphs */
     font-size: 18px;
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 20px; /* Etwas weniger Padding auf mobilen Geräten */
+        padding: 20px; /* Less padding on mobile devices */
     }
 
     .site-header h1 {
         font-size: 36px;
-        margin-bottom: 40px; /* Mehr Abstand auf kleinen Bildschirmen */
+        margin-bottom: 40px; /* More space on small screens */
     }
 
     .container {
@@ -129,8 +130,8 @@ section {
     }
 
     .date-selector {
-        gap: 10px; /* Weniger Abstand auf mobilen Geräten */
-        margin-bottom: 40px; /* Kleinere Abstände auf mobilen Geräten */
+        gap: 10px; /* Less space between buttons on mobile devices */
+        margin-bottom: 40px; /* Smaller spacing on mobile devices */
     }
 
     .date-selector button {
