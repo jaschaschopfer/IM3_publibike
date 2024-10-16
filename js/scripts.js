@@ -128,8 +128,14 @@ function fetchData() {
         // Extract data for chart
         const stationNames = jsonData.map(item => item.name); // X-axis (stations)
         const altitudes = jsonData.map(item => item.altitude); // Y-axis (altitude)
-        const radiusMultiplier = 1; // Multiplier for scaling radius
-        const radiusBase = 1;   // Base radius for circles
+
+        if (window.innerWidth < 768) {
+            radiusBase = 0.5;    // Smaller base for small screens
+            radiusMultiplier = 0.5;  // Smaller multiplier for small screens
+        } else {
+            radiusBase = 1;  // Default base for larger screens
+            radiusMultiplier = 1;  // Default multiplier for larger screens
+        }
 
         // Velos data (green circles)
         const velosData = jsonData.map((item, index) => ({
@@ -196,10 +202,11 @@ function fetchData() {
                     scales: {
                         x: {
                             title: {
-                                display: true,
+                                display: true, // Always show title
                                 text: 'Süd-Nord Achse'
                             },
                             ticks: {
+                                display: window.innerWidth >= 768, // Show ticks only on larger screens
                                 callback: function(value, index, ticks) {
                                     const totalTicks = ticks.length; // Total number of ticks on the X-axis
                                     // Hardcode the names for the first, middle, and last stations
@@ -212,19 +219,21 @@ function fetchData() {
                                     } else if (index === ticks.length - 1) {
                                         return ['Norden:', 'Engeried,', 'Lorraine', 'Breitenrain']; // North (as array for line break)
                                     }
-                            
                                     // For other ticks, return an empty string
                                     return '';
                                 },
                                 autoSkip: false, // No auto-skip
-                                maxRotation: 45, // Rotate labels to avoid overlap
-                                minRotation: 45
+                                maxRotation: window.innerWidth >= 768 ? 45 : 0, // Rotate labels only on larger screens
+                                minRotation: window.innerWidth >= 768 ? 45 : 0
                             }
                         },
                         y: {
                             title: {
-                                display: true,
+                                display: true, // Always show title
                                 text: 'Höhenlage (m.ü.M.)'
+                            },
+                            ticks: {
+                                display: window.innerWidth >= 768 // Show ticks only on larger screens
                             },
                             min: Math.min(...altitudes) - 20,
                             max: Math.max(...altitudes) + 20
@@ -251,7 +260,7 @@ function fetchData() {
                                     // Return formatted tooltip displaying both Velos and E-Bikes information
                                     return [
                                         `${stationName}:`,
-                                        `Velos: ${velosCount} (${altitude} m)`,
+                                        `Velos: ${velosCount} (${altitude} m)` ,
                                         `E-Bikes: ${ebikesCount} (${altitude} m)`
                                     ];
                                 }
