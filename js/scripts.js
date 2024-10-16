@@ -7,9 +7,6 @@ $("#date-picker").datepicker({
     defaultDate: "2024-10-10"   // Set the default date to 2024-10-10 in case somehow nothing is selected
 });
 
-// Get the current date and time
-const currentDate = new Date();
-
 // Function to round the current time to the nearest previous quarter-hour
 function getNearestQuarterHour(date) {
     const minutes = date.getMinutes();
@@ -19,8 +16,11 @@ function getNearestQuarterHour(date) {
     return date;
 }
 
-// Get the nearest quarter-hour and set it as the default time
-const nearestQuarterHour = getNearestQuarterHour(new Date()); // Get current time rounded to the nearest previous quarter-hour
+// Get the current date
+const currentDate = new Date();
+
+// Get all necessary date and time values for following functions
+const nearestQuarterHour = getNearestQuarterHour(currentDate); // Get current time rounded to the nearest previous quarter-hour
 const defaultHour = nearestQuarterHour.getHours();
 const defaultMinutes = nearestQuarterHour.getMinutes();
 const defaultSliderValue = (defaultHour * 60 + defaultMinutes) / 15; // Convert time to slider value (15-minute intervals)
@@ -53,15 +53,6 @@ function initializeDateTime() {
     $("#date-picker").val(formattedDate); // Update the date picker value
 }
 
-// Function to update the time label and convert slider value to 15-minute intervals
-function updateTimeLabel(value) {
-    const totalMinutes = value * 15; // Each slider step represents 15 minutes
-    const hours = Math.floor(totalMinutes / 60); // Convert to hours
-    const minutes = totalMinutes % 60; // Get remaining minutes
-    const formattedTime = `${("0" + hours).slice(-2)}:${("0" + minutes).slice(-2)}`; // Format time with leading zeroes
-    $("#time-label").text(formattedTime); // Update the time label next to the slider
-}
-
 // Function to update the slider max based on today's time
 function updateSliderMax() {
     const selectedDate = $("#date-picker").datepicker("getDate");
@@ -82,6 +73,15 @@ function updateSliderMax() {
         // For other days, use the full 24-hour period
         $("#time-slider").attr("min", 0).attr("max", 95);
     }
+}
+
+// Function to update the time label and convert slider value to 15-minute intervals
+function updateTimeLabel(value) {
+    const totalMinutes = value * 15; // Each slider step represents 15 minutes
+    const hours = Math.floor(totalMinutes / 60); // Convert to hours
+    const minutes = totalMinutes % 60; // Get remaining minutes
+    const formattedTime = `${("0" + hours).slice(-2)}:${("0" + minutes).slice(-2)}`; // Format time with leading zeroes
+    $("#time-label").text(formattedTime); // Update the time label next to the slider
 }
 
 // Set the initial time label to the current time rounded to the nearest quarter-hour
@@ -197,7 +197,7 @@ function fetchData() {
                         x: {
                             title: {
                                 display: true,
-                                text: 'Stationen'
+                                text: 'Süd-Nord Achse'
                             },
                             ticks: {
                                 callback: function(value, index, ticks) {
