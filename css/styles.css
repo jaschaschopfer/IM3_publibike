@@ -11,19 +11,21 @@ body {
     background-color: #faf3ec;
     color: #4f3d33;
     padding: 20px;
+    margin: 0;
+}
+
+section {
+    margin: 20px;
 }
 
 .container {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
+    padding: 0 20px; /* Ensure padding for small screens */
 }
 
-.header {
-    margin-bottom: 20px;
-}
-
-.header h1 {
+.site-header h1 {
     font-size: 48px;
     font-weight: bold;
     color: #5c5148;
@@ -34,51 +36,41 @@ body {
     font-size: 18px;
 }
 
-.graph {
-    margin-bottom: 40px;
-}
-
-.search-box input {
-    width: 60%;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.graph-container {
-    margin-bottom: 20px;
-}
-
-.graph-image {
+.graph-section {
     width: 100%;
-    max-width: 600px;
-    height: auto;
-    margin-bottom: 20px;
 }
 
-.time-selector {
-    margin-bottom: 10px;
+#altitudeChart {
+    width: 100%;   /* Set the specific width */
 }
 
-.time-selector .slider {
-    width: 80%;
-    height: 6px;
-    background-color: #d3d3d3;
-    outline: none;
-    margin: 20px 0;
+.controls {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Make the controls container full width */
+    max-width: 100%; /* Prevent overflow */
+    padding: 0; /* Remove any extra padding */
 }
 
-.time-selector .time {
-    font-size: 14px;
-    margin: 0 10px;
+.controls button {
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0; /* Prevent shrinking of button */
+}
+
+#time-slider {
+    flex: 1;
+    height: 40px;
+    width: 100%; /* Set slider width to 100% */
+    max-width: 100%; /* Prevent overflow */
+    margin: 0 10px; /* Space between button and slider */
 }
 
 .date-selector {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 10px;
     margin-bottom: 40px;
 }
 
@@ -88,11 +80,6 @@ body {
     font-size: 24px;
     color: #4f3d33;
     cursor: pointer;
-}
-
-.date-selector span {
-    font-size: 18px;
-    margin: 0 20px;
 }
 
 .conclusion h2 {
@@ -108,19 +95,31 @@ body {
 }
 
 @media (max-width: 768px) {
-    .header h1 {
+    body {
+        padding: 10px; /* Reduce padding for small screens */
+    }
+
+    .site-header h1 {
         font-size: 36px;
     }
 
-    .search-box input {
-        width: 100%;
+    .container {
+        max-width: 100%; /* Allow the container to be fluid on small screens */
+        padding: 0 10px; /* Reduce padding */
     }
 
-    .graph-container img {
-        width: 100%;
+    .controls {
+        width: 100%; /* Ensure full width of the controls container */
+        flex-direction: row;
+        padding: 0; /* Remove extra padding */
     }
 
-    .time-selector .slider {
-        width: 100%;
+    #time-slider {
+        width: 100%; /* Make sure the slider takes full width on mobile */
+        margin: 0 10px; /* Adjust the margin for spacing */
+    }
+
+    .date-selector button {
+        margin: 5px 0; /* Space buttons better on small screens */
     }
 }

@@ -107,7 +107,8 @@ let isPlaying = false; // Flag to track whether the play button is active
 // Function to clear the canvas before rendering a new chart
 function resetCanvas() {
     $('#altitudeChart').remove(); // Remove the canvas element
-    $('.graph-section').append('<canvas id="altitudeChart" width="900" height="400"></canvas>'); // Add a new canvas element
+    $('.graph-section').append('<canvas id="altitudeChart"></canvas>'); // Add a new canvas element
+    const canvas = document.getElementById('altitudeChart');
 }
 
 // Function to fetch and update the chart data based on date and time
@@ -190,8 +191,7 @@ function fetchData() {
                     ]
                 },
                 options: {
-                    
-                    responsive: true,
+                    responsive: true,  // Disable responsiveness
                     animation: false, // Disable animation when updating the graph
                     scales: {
                         x: {
@@ -224,7 +224,7 @@ function fetchData() {
                         y: {
                             title: {
                                 display: true,
-                                text: 'Höhenlage (m)'
+                                text: 'Höhenlage (m.ü.M.)'
                             },
                             min: Math.min(...altitudes) - 20,
                             max: Math.max(...altitudes) + 20
