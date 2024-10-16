@@ -279,6 +279,27 @@ function fetchData() {
 // Fetch data initially when the page loads
 fetchData();
 
+// Add event listener for window resize to update chart options based on new screen size
+let lastWidth = window.innerWidth;
+window.addEventListener('resize', () => {
+    const currentWidth = window.innerWidth;
+    if (currentWidth > lastWidth) {
+        // NOT WORKING YET
+    } else if (currentWidth < lastWidth) {
+        // If resizing to a smaller screen, just update the chart
+        if (chart) {
+            chart.options.scales.x.ticks.display = currentWidth >= 768;
+            chart.options.scales.x.ticks.maxRotation = currentWidth >= 768 ? 45 : 0;
+            chart.options.scales.x.ticks.minRotation = currentWidth >= 768 ? 45 : 0;
+            chart.options.scales.y.ticks.display = currentWidth >= 768;
+
+            // Update the chart with the new settings
+            chart.update();
+        }
+    }
+    lastWidth = currentWidth;
+});
+
 
 
 
