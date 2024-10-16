@@ -175,15 +175,15 @@ function fetchData() {
                     datasets: [
                         {
                             label: 'Velos',
-                            backgroundColor: 'rgba(0, 255, 0, 0.4)', // Green with 40% transparency
-                            borderColor: 'rgba(0, 255, 0, 0.8)', // Green border
+                            backgroundColor: 'rgba(0, 255, 0, 0.5)', // Green with 40% transparency
+                            borderColor: 'rgba(0, 255, 0, 0.1)', // Green border
                             data: velosData,
                             hidden: false // Default visibility
                         },
                         {
                             label: 'E-Bikes',
-                            backgroundColor: 'rgba(255, 255, 0, 0.4)', // Yellow with 40% transparency
-                            borderColor: 'rgba(255, 255, 0, 0.8)', // Yellow border
+                            backgroundColor: 'rgba(255, 255, 0, 0.5)', // Yellow with 40% transparency
+                            borderColor: 'rgba(255, 255, 0, 1)', // Yellow border
                             data: ebikesData,
                             hidden: false // Default visibility
                         }
