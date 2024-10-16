@@ -8,7 +8,7 @@
 body {
     font-family: 'League Spartan', sans-serif;
     line-height: 1.8; /* Increases line spacing */
-    background-color: #faf3ec;
+    background-color: rgb(254, 250, 244);
     color: #4f3d33;
     padding: 40px; /* Adds more padding to the body */
     margin: 0;
