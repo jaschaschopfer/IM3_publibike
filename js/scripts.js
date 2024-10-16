@@ -113,7 +113,6 @@ function resetCanvas() {
 // Function to fetch and update the chart data based on date and time
 function fetchData() {
     const date = $("#date-picker").val(); // Get the selected date from the date picker
-    console.log(date);
     const timeValue = $("#time-slider").val(); // Get the slider value (0-95 for 15-minute intervals)
     const totalMinutes = timeValue * 15; // Convert slider value to total minutes
     const hours = Math.floor(totalMinutes / 60); // Convert to hours
@@ -136,13 +135,18 @@ function fetchData() {
             x: index + 1, // Distribute stations equally on the X-axis
             y: item.altitude,
             r: item.velos_count * radiusMultiplier + radiusBase, // Radius scales with velos count
+            name: item.name // Include station name
         }));
+
+        // Labels for specific stations
+        const labelSet = new Set(['Engehalde', 'Bahnhofplatz', 'Zentrum Paul Klee']);
 
         // E-Bikes data (yellow circles)
         const ebikesData = jsonData.map((item, index) => ({
             x: index + 1, // Distribute stations equally on the X-axis
             y: item.altitude,
             r: item.ebikes_count * radiusMultiplier + radiusBase, // Radius scales with ebikes count
+            name: item.name // Include station name
         }));
 
         // Check if the chart already exists
@@ -186,6 +190,7 @@ function fetchData() {
                     ]
                 },
                 options: {
+                    
                     responsive: true,
                     animation: false, // Disable animation when updating the graph
                     scales: {
@@ -195,9 +200,25 @@ function fetchData() {
                                 text: 'Stationen'
                             },
                             ticks: {
-                                callback: function(value, index) {
-                                    return stationNames[index]; // Display station names on the X-axis
-                                }
+                                callback: function(value, index, ticks) {
+                                    const totalTicks = ticks.length; // Total number of ticks on the X-axis
+                                    // Hardcode the names for the first, middle, and last stations
+                                    if (index === 0) {
+                                        return ['Süden:', 'Mattenhof', 'Weissenbühl', 'Kirchenfeld']; // South (as array for line break)
+                                    } else if (index === 3) {
+                                        return 'Stadtmitte'; // Mid (single line)
+                                    } else if (index === 4) {
+                                        return 'Stadtmitte'; // Mid (single line)
+                                    } else if (index === ticks.length - 1) {
+                                        return ['Norden:', 'Engeried,', 'Lorraine', 'Breitenrain']; // North (as array for line break)
+                                    }
+                            
+                                    // For other ticks, return an empty string
+                                    return '';
+                                },
+                                autoSkip: false, // No auto-skip
+                                maxRotation: 45, // Rotate labels to avoid overlap
+                                minRotation: 45
                             }
                         },
                         y: {
@@ -213,9 +234,26 @@ function fetchData() {
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    const datasetLabel = context.dataset.label;
-                                    const count = (context.raw.r - radiusBase) / radiusMultiplier; // Reverse calculation for count from radius
-                                    return `${datasetLabel}: ${count} (${context.raw.y} m)`;
+                                    const stationIndex = context.dataIndex; // Get the index of the current station
+                                    const velosDataset = context.chart.data.datasets[0]; // Velos dataset (assuming it's the first dataset)
+                                    const ebikesDataset = context.chart.data.datasets[1]; // E-Bikes dataset (assuming it's the second dataset)
+                    
+                                    // Extract the Velos and E-Bikes data for this station
+                                    const velosData = velosDataset.data[stationIndex];
+                                    const ebikesData = ebikesDataset.data[stationIndex];
+                    
+                                    // Extract station name, bike counts, and altitude
+                                    const stationName = velosData.name; // Station name will be the same for both datasets
+                                    const velosCount = (velosData.r - radiusBase) / radiusMultiplier; // Velos count
+                                    const ebikesCount = (ebikesData.r - radiusBase) / radiusMultiplier; // E-Bikes count
+                                    const altitude = velosData.y; // Altitude (same for both)
+                    
+                                    // Return formatted tooltip displaying both Velos and E-Bikes information
+                                    return [
+                                        `${stationName}:`,
+                                        `Velos: ${velosCount} (${altitude} m)`,
+                                        `E-Bikes: ${ebikesCount} (${altitude} m)`
+                                    ];
                                 }
                             }
                         }
