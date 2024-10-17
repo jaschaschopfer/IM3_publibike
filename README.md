@@ -4,7 +4,9 @@ This data visualization project displays the distribution of e-bikes and regular
 Scan Area:
 
 <img width="428" alt="image" src="https://github.com/user-attachments/assets/590e99f5-701d-48f8-9b41-a7c6fd19001d">
-<img width="428" alt="image" src="https://github.com/user-attachments/assets/106d13fe-283f-45af-8060-ef0b3e60adfd">
+
+<img width="428" alt="image" src="https://github.com/user-attachments/assets/f4c91d45-54db-43e0-b331-6b9d40154180">
+
 
 
 
