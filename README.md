@@ -1,14 +1,6 @@
 # IM3_publibike
 This data visualization project displays the distribution of e-bikes and regular bikes across various Publibike stations in Bern, organized in a south-north axis by elevation levels. It tracks how the bikes are spread across the city over time, showing whether e-bikes tend to accumulate at higher elevations and regular bikes at lower ones. The analysis also proposes solutions, such as dynamic pricing, to encourage better distribution of bikes. By offering discounts for certain routes, Publibike could save on logistics and improve user experience.
 
-Scan Area:
-
-<img width="428" alt="image" src="https://github.com/user-attachments/assets/590e99f5-701d-48f8-9b41-a7c6fd19001d">
-
-<img width="428" alt="image" src="https://github.com/user-attachments/assets/f4c91d45-54db-43e0-b331-6b9d40154180">
-
-
-
 
 # Learnings
 - how to connect to different endpoints of different APIs: Publibike API and elevation API
@@ -37,3 +29,13 @@ Scan Area:
 - Stack OverFlow
 - MMP 101
 - Dozenten Coachings
+
+
+# Attachements
+
+Chart Area and Height Profile (along yellow line)
+
+![image](https://github.com/user-attachments/assets/5d992ad9-b8e4-4876-b9da-7168c19a2738)
+
+
+<img width="428" alt="image" src="https://github.com/user-attachments/assets/f4c91d45-54db-43e0-b331-6b9d40154180">
