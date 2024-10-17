@@ -22,20 +22,20 @@
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
 
-        <section class="intro">
+        <div class="intro">
             <p>
                 Du kennst das bestimmt: Im Marzili steht kein E-Bike mehr bereit und für die Abfahrt aus der Länggasse
                 an den Bahnhof findest du kein normales Velo. Subjektiver Frust oder tatsächlich so?
                 Vom Süden ganz links bis in den Norden ganz rechts haben wir im Graphen alle Publibike-Stationen von Bern in ihren Höhenlagen verortet.
                 Live oder als Replay: Erfahre jetzt, wie die Publis tatsächlich verteilt sind.
             </p>
-        </section>
+        </div>
 
-        <section >
-            <article class="graph-section">
+        <div >
+            <div class="graph-section">
                 <canvas id="altitudeChart"></canvas>
-            </article>
-            <article class="date-time-selector">
+            </div>
+            <div class="date-time-selector">
                 <div class="controls">
                     <button id="play-btn" aria-label="Play Button">▶</button>
                     <input type="range" id="time-slider">
@@ -47,8 +47,8 @@
                     <input id="date-picker">
                     <button id="next-day">→</button>
                 </div>
-            </article>
-        </section>
+            </div>
+        </div>
 
         <img src="img/Bahnhof.png" alt="Bahnhofplatz Bern" class="bahnhof-image">
 
@@ -69,17 +69,18 @@
                 User ein Erfreuen und viel Logistikarbeit beim Unternehmen eingespart!
             </p>
         </section>
-        <section>
+        <div>
             <p>
                 Und hey, Publibike, wenn euch unsere Idee weiterhilft: Wir freuen uns über ein lebenslanges Publi-Abo ;)
             </p>
-        </section>
+        </div>
   
         <img src="img/Aare.png" alt="Aare und Bär in Bern" class="footer-image">
 
     </main>
     <footer class="footer">
         <p>Ein Projekt von Jascha Schopfer und Lara Koçöz</p>
+    </footer>
     <script src="/js/scripts.js"></script>
 </body>
 </html>
