@@ -9,7 +9,9 @@ This data visualization project displays the distribution of e-bikes and regular
 - loading to and unloading from our database
 - separating the steps into different PHP files
 - implementing libraries like chart.js, datepicker
-- data visualisation in end product can differ from prototype as with real data you may find out new things (we changed to sort by longitude instead of altitude, labeled the chart in a new way)
+- data visualisation in end product can differ from prototype as with real data you may find out new things
+  - we changed to sort by longitude instead of altitude, labeled the chart in a new way
+    
 - CSS is a pain (but not impossible ;))
 
 
@@ -27,3 +29,13 @@ This data visualization project displays the distribution of e-bikes and regular
 - Stack OverFlow
 - MMP 101
 - Dozenten Coachings
+
+
+# Attachements
+
+Chart Area and Sample Height Profile along yellow line
+
+![image](https://github.com/user-attachments/assets/5d992ad9-b8e4-4876-b9da-7168c19a2738)
+
+
+<img width="428" alt="image" src="https://github.com/user-attachments/assets/f4c91d45-54db-43e0-b331-6b9d40154180">
