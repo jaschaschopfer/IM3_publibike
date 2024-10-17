@@ -54,6 +54,10 @@ section {
     margin-top: 150px;
 }
 
+.footer p {
+    font-size: smaller;
+}
+
 
 /* Redundant CSS cause CSS sucks (don't know why it doesn't work simplified) SORRY!*/
 .img {

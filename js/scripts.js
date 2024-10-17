@@ -137,15 +137,7 @@ function fetchData() {
             radiusMultiplier = 1;  // Default multiplier for larger screens
         }
 
-        // Velos data (green circles)
-        const velosData = jsonData.map((item, index) => ({
-            x: index + 1, // Distribute stations equally on the X-axis
-            y: item.altitude,
-            r: item.velos_count * radiusMultiplier + radiusBase, // Radius scales with velos count
-            name: item.name // Include station name
-        }));
-
-        // E-Bikes data (yellow circles)
+        // E-Bikes data (yellow circles) (Moved to the top)
         const ebikesData = jsonData.map((item, index) => ({
             x: index + 1, // Distribute stations equally on the X-axis
             y: item.altitude,
@@ -153,19 +145,27 @@ function fetchData() {
             name: item.name // Include station name
         }));
 
+        // Velos data (green circles) (Moved to the bottom)
+        const velosData = jsonData.map((item, index) => ({
+            x: index + 1, // Distribute stations equally on the X-axis
+            y: item.altitude,
+            r: item.velos_count * radiusMultiplier + radiusBase, // Radius scales with velos count
+            name: item.name // Include station name
+        }));
+
         // Check if the chart already exists
         if (chart) {
-            // Preserve the hidden state of Velos and Ebikes datasets
-            const velosHidden = chart.getDatasetMeta(0).hidden;
-            const ebikesHidden = chart.getDatasetMeta(1).hidden;
+            // Preserve the hidden state of Ebikes and Velos datasets
+            const ebikesHidden = chart.getDatasetMeta(0).hidden;
+            const velosHidden = chart.getDatasetMeta(1).hidden;
 
             // Update the dataset data
-            chart.data.datasets[0].data = velosData; // Update Velos data
-            chart.data.datasets[1].data = ebikesData; // Update Ebikes data
+            chart.data.datasets[0].data = ebikesData; // Update Ebikes data
+            chart.data.datasets[1].data = velosData; // Update Velos data
 
-            // Explicitly set the visibility of Velos and Ebikes based on their previous state ((DEBUG OF RESETTING VISIBILITY WHEN CHANGING TIME))
-            chart.data.datasets[0].hidden = velosHidden;
-            chart.data.datasets[1].hidden = ebikesHidden;
+            // Explicitly set the visibility of Ebikes and Velos based on their previous state
+            chart.data.datasets[0].hidden = ebikesHidden;
+            chart.data.datasets[1].hidden = velosHidden;
 
             // Update the chart with the new data while preserving visibility
             chart.update();
@@ -178,17 +178,17 @@ function fetchData() {
                 data: {
                     datasets: [
                         {
-                            label: 'Velos',
-                            backgroundColor: 'rgba(107, 142, 35, 0.5)', // Green with 40% transparency
-                            borderColor: 'rgba(107, 142, 35, 0.1)', // Green border
-                            data: velosData,
-                            hidden: false // Default visibility
-                        },
-                        {
-                            label: 'E-Bikes',
+                            label: 'E-Bikes', // Switched to E-Bikes
                             backgroundColor: 'rgba(255, 215, 0, 0.5)', // Yellow with 40% transparency
                             borderColor: 'rgba(255, 215, 0, 0.1)', // Yellow border
                             data: ebikesData,
+                            hidden: false // Default visibility
+                        },
+                        {
+                            label: 'Velos', // Switched to Velos
+                            backgroundColor: 'rgba(107, 142, 35, 0.5)', // Green with 40% transparency
+                            borderColor: 'rgba(107, 142, 35, 0.1)', // Green border
+                            data: velosData,
                             hidden: false // Default visibility
                         }
                     ]
@@ -247,24 +247,24 @@ function fetchData() {
                             callbacks: {
                                 label: function(context) {
                                     const stationIndex = context.dataIndex; // Get the index of the current station
-                                    const velosDataset = context.chart.data.datasets[0]; // Velos dataset (assuming it's the first dataset)
-                                    const ebikesDataset = context.chart.data.datasets[1]; // E-Bikes dataset (assuming it's the second dataset)
+                                    const ebikesDataset = context.chart.data.datasets[0]; // E-Bikes dataset (assuming it's the first dataset)
+                                    const velosDataset = context.chart.data.datasets[1]; // Velos dataset (assuming it's the second dataset)
                     
-                                    // Extract the Velos and E-Bikes data for this station
-                                    const velosData = velosDataset.data[stationIndex];
+                                    // Extract the E-Bikes and Velos data for this station
                                     const ebikesData = ebikesDataset.data[stationIndex];
+                                    const velosData = velosDataset.data[stationIndex];
                     
                                     // Extract station name, bike counts, and altitude
-                                    const stationName = velosData.name; // Station name will be the same for both datasets
-                                    const velosCount = (velosData.r - radiusBase) / radiusMultiplier; // Velos count
+                                    const stationName = ebikesData.name; // Station name will be the same for both datasets
                                     const ebikesCount = (ebikesData.r - radiusBase) / radiusMultiplier; // E-Bikes count
-                                    const altitude = velosData.y; // Altitude (same for both)
+                                    const velosCount = (velosData.r - radiusBase) / radiusMultiplier; // Velos count
+                                    const altitude = ebikesData.y; // Altitude (same for both)
                     
-                                    // Return formatted tooltip displaying both Velos and E-Bikes information
+                                    // Return formatted tooltip displaying both E-Bikes and Velos information
                                     return [
                                         `${stationName}:`,
-                                        `Velos: ${velosCount} (${altitude} m)` ,
-                                        `E-Bikes: ${ebikesCount} (${altitude} m)`
+                                        `E-Bikes: ${ebikesCount} (${altitude} m)`,
+                                        `Velos: ${velosCount} (${altitude} m)`
                                     ];
                                 }
                             }
@@ -281,6 +281,7 @@ function fetchData() {
 
 // Fetch data initially when the page loads
 fetchData();
+
 
 // Add event listener for window resize to update chart options based on new screen size
 let lastWidth = window.innerWidth;
