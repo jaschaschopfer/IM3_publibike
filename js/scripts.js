@@ -145,9 +145,6 @@ function fetchData() {
             name: item.name // Include station name
         }));
 
-        // Labels for specific stations
-        const labelSet = new Set(['Engehalde', 'Bahnhofplatz', 'Zentrum Paul Klee']);
-
         // E-Bikes data (yellow circles)
         const ebikesData = jsonData.map((item, index) => ({
             x: index + 1, // Distribute stations equally on the X-axis
