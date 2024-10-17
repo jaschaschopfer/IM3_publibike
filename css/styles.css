@@ -1,8 +1,9 @@
-/* Reset some default styling */
+/* Default styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 24px;
 }
 
 h1, h2, h3 {
@@ -18,8 +19,14 @@ h1 {
     line-height: 0.9;
     text-align: center;
     padding-top: 150px;
-    z-index: 10; /* Ensure title stays on top */
-    position: relative; /* Ensure it stays positioned correctly */
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #5c5148;
+    margin-top: 200px;
+    margin-bottom: 0px;
 }
 
 body {
@@ -42,36 +49,55 @@ section {
 }
 
 
-/* Individual styling */
-img {
-    width: 100%;
-    max-width: 600px;
+/* Redundant CSS cause CSS sucks (don't know why it doesn't work simplified) SORRY!*/
+.img {
+    max-width: 100%;
     height: auto;
     display: block;
-    margin-top: 30px; /* Move the image further down to avoid overlap with the title */
-    position: relative;
-    z-index: 1; /* Ensure the image stays below other content */
-    left: 400px; /* Move the image to the right */
+    max-width: 800px; /* Ensure images don’t exceed a certain size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+}
+
+.header-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    max-width: 800px; /* Ensure images don’t exceed a certain size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin-left: auto; /* Align the image to the right */
+    position: relative; /* Allows for 'right' property to work */
+    right: -180px; /* Move the image 180px further to the right */
 }
 
 .bahnhof-image {
-    left: -300px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    max-width: 800px; /* Ensure images don’t exceed a certain size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin-left: 0;
+    margin-right: auto;
+    position: relative;
+    left: -180px; /* Move the image 180px further to the right */
 }
 
-.intro {
-    margin-bottom: 150px;
-    font-size: 18px;
-    margin-top: 200px;
+.footer-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    max-width: 800px; /* Ensure images don’t exceed a certain size */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    margin-left: auto; /* Align the image to the right */
+    position: relative; /* Allows for 'right' property to work */
+    right: -180px; /* Move the image 180px further to the right */
 }
 
-.graph-section {
-    width: 100%;
-    margin-bottom: 0;
-}
 
-#altitudeChart {
-    width: 100%;
-}
+/* Individual styling */
 
 .date-time-selector {
     display: flex;
@@ -83,22 +109,17 @@ img {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin-bottom: 0;
 }
 
 .controls button {
     height: 40px;
     width: 40px;
-    flex-shrink: 0;
 }
 
 #time-slider {
     flex: 1;
     height: 40px;
     width: 100%;
-    max-width: 100%;
     margin: 0 30px;
 }
 
@@ -107,7 +128,10 @@ img {
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-bottom: 150px;
+}
+
+#date-picker {
+    font-size: 20px;
 }
 
 .date-selector button {
@@ -118,112 +142,70 @@ img {
     cursor: pointer;
 }
 
-.analyzis h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #5c5148;
-    margin-top: 200px;
-    margin-bottom: 0px;
-}
-
-.analyzis p {
-    margin-top: 0px;
-    margin-bottom: 120px;
-    font-size: 18px;
-}
-
-.conclusion h2 {
-    font-size: 32px;
-    font-weight: bold;
-    color: #5c5148;
-    margin-top: 200px;
-    margin-bottom: 0px;
-}
-
-.conclusion p {
-    margin-bottom: -100;
-    font-size: 18px;
-    margin-top: 0px;
-}
-
-.header-image,
-    .bahnhof-image,
-    .footer-image {
-        max-width: 800px;
-    }
-
 /* Mobile Styling */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     body {
-        padding: 20px;
+        padding: 5px;
     }
 
-    .site-header {
-        z-index: 10; /* Ensures the title stays on top */
+    * {
+        font-size: 16px;
+
+    }
+    
+    h1 {
+        font-size: 64px;
     }
 
-    .site-header h1 {
-        font-size: 64px; /* Larger font size for mobile */
-        margin-bottom: 30px;
-        padding-top: 20px;
-        line-height: 1;
+    .container, .site-header {
+        max-width: 100%;
+        padding: 0 0px;
     }
 
     .container {
-        max-width: 100%;
         padding: 0 20px;
     }
 
     .controls {
-        width: 100%;
-        flex-direction: column;
         padding: 0;
+    }
+
+    #play-btn {
+        font-size: 15px;
+    }
+    
+    .controls button {
+        height: 30px;
+        width: 30px;
     }
 
     #time-slider {
         width: 100%;
-        margin: 0 20px;
+        margin: 0 15px;
+    }
+
+    #date-picker {
+        font-size: 16px;
     }
 
     .date-selector {
-        gap: 20px;
-        margin-bottom: 80px;
+        gap: 15px;
     }
 
-    .date-selector button {
-        margin: 10px 0;
-    }
-
-    .conclusion h2 {
-        margin-top: 120px;
-        margin-bottom: 60px;
-    }
 
     /* Mobile adjustments for images */
     .header-image {
-        width: 100%;
         max-width: 100%;
-        height: auto;
-        margin-top: 30px; /* Ensure image is below the title */
-        left: 20%; /* Keep similar alignment for mobile */
-        z-index: 1; /* Ensure the image stays behind the title */
+        position: unset;
     }
 
     .bahnhof-image {
-        width: 100%;
         max-width: 100%;
-        height: auto;
-        margin-top: 30px;
-        left: -20%;
-        z-index: 1;
+        position: unset;
     }
 
     .footer-image {
-        width: 100%;
         max-width: 100%;
-        height: auto;
-        margin-top: 30px;
-        left: 20%;
-        z-index: 1;
+        position: unset;
     }
 }

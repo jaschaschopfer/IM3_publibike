@@ -203,7 +203,10 @@ function fetchData() {
                         x: {
                             title: {
                                 display: true, // Always show title
-                                text: 'Süd-Nord Achse'
+                                text: 'Süd-Nord Achse',
+                                font: {
+                                    size: window.innerWidth < 1000 ? 10 : 20  // Change font size based on screen width
+                                }
                             },
                             ticks: {
                                 display: window.innerWidth >= 768, // Show ticks only on larger screens
@@ -230,7 +233,10 @@ function fetchData() {
                         y: {
                             title: {
                                 display: true, // Always show title
-                                text: 'Höhenlage (m.ü.M.)'
+                                text: 'Höhenlage (m.ü.M.)',
+                                font: {
+                                    size: window.innerWidth < 1000 ? 10 : 20  // Change font size based on screen width
+                                }
                             },
                             ticks: {
                                 display: window.innerWidth >= 768 // Show ticks only on larger screens
