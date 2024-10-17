@@ -5,32 +5,11 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'League Spartan', sans-serif;
-    line-height: 1.8;
-    background-color: rgb(254, 250, 244);
-    color: #4f3d33;
-    padding: 100px;
-    margin: 0;
-}
-
-section {
-    margin: 150px 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 0 80px;
-}
-.site-header {
-    position: relative;
-    z-index: 10; /* Ensures the title stays on top */
-}
-
-.site-header h1 {
+h1, h2, h3 {
     font-family: 'Orbitron', sans-serif;
+}
+
+h1 {
     font-size: 144px;
     font-weight: bold;
     color: #5c5148;
@@ -43,37 +22,40 @@ section {
     position: relative; /* Ensure it stays positioned correctly */
 }
 
-.header-image {
+body {
+    font-family: 'League Spartan', sans-serif;
+    line-height: 1.8;
+    background-color: rgb(254, 250, 244);
+    color: #4f3d33;
+    padding: 100px;
+    margin: 0;
+}
+.container, .site-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 80px;
+}
+
+section {
+    margin: 150px 0;
+}
+
+
+/* Individual styling */
+img {
     width: 100%;
     max-width: 600px;
     height: auto;
     display: block;
     margin-top: 30px; /* Move the image further down to avoid overlap with the title */
     position: relative;
-    left: 400px;
-    z-index: 1; /* Ensure the image is below the title */
+    z-index: 1; /* Ensure the image stays below other content */
+    left: 400px; /* Move the image to the right */
 }
 
 .bahnhof-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    display: block;
-    margin-top: 30px;
-    position: relative;
     left: -300px;
-    z-index: 1; /* Ensure the image stays below other content */
-}
-
-.footer-image {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    display: block;
-    margin-top: 30px; /* Add margin to ensure it's not too close to other elements */
-    position: relative;
-    left: 400px;
-    z-index: 1; /* Ensure it stays under the content */
 }
 
 .intro {
@@ -89,6 +71,12 @@ section {
 
 #altitudeChart {
     width: 100%;
+}
+
+.date-time-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .controls {
@@ -168,6 +156,10 @@ section {
 @media (max-width: 768px) {
     body {
         padding: 20px;
+    }
+
+    .site-header {
+        z-index: 10; /* Ensures the title stays on top */
     }
 
     .site-header h1 {

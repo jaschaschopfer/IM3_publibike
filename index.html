@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 </head>
 <body>
-    <main class="container">
-        <header class="site-header">
-            <h1>Wo sind die Publibikes hin?</h1>
-            <img src="img/Paul_Klee.png" alt="Wavy Lines" class="header-image">
+    <header class="site-header">
+        <h1>Wo sind die Publibikes hin?</h1>
+        <img src="img/Paul_Klee.png" alt="Zentrum Paul Klee" class="header-image">
 
-        </header>
+    </header>
+    <main class="container">
         <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap" rel="stylesheet">
 
@@ -31,25 +31,26 @@
             </p>
         </section>
 
-        <section class="graph-section" >
-            <canvas id="altitudeChart"></canvas>
-        </section>
-
-        <section class="date-time-selector">
-            <div class="controls" style="display: flex; align-items: center; width: 900px;">
-                <button id="play-btn" style="height: 40px; width: 40px;">▶</button>
-                <input type="range" id="time-slider" min="0" max="95" value="0" style="flex: 1; height: 40px;">
-                <span id="time-label" style="margin-left: 10px;">00:00</span>
-            </div>
-            
-            <article class="date-selector">
-                <button id="prev-day">←</button>
-                <input type="text" id="date-picker" value="Pick a date">
-                <button id="next-day">→</button>
+        <section >
+            <article class="graph-section">
+                <canvas id="altitudeChart"></canvas>
+            </article>
+            <article class="date-time-selector">
+                <div class="controls">
+                    <button id="play-btn" aria-label="Play Button">▶</button>
+                    <input type="range" id="time-slider">
+                    <span id="time-label">00:00</span>
+                </div>
+                
+                <div class="date-selector">
+                    <button id="prev-day">←</button>
+                    <input id="date-picker">
+                    <button id="next-day">→</button>
+                </div>
             </article>
         </section>
 
-        <img src="img/Bahnhof.png" alt="Bahnhof" class="bahnhof-image">
+        <img src="img/Bahnhof.png" alt="Bahnhofplatz Bern" class="bahnhof-image">
 
         <section class="analyzis">
             <h2>Analyse</h2>
@@ -72,7 +73,7 @@
             </p>
         </section>
   
-<img src="img/Aare.png" alt="Stadtbild" class="footer-image">
+<img src="img/Aare.png" alt="Aare und Bär in Bern" class="footer-image">
 
     </main>
     <script src="/js/scripts.js"></script>
