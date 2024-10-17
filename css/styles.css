@@ -10,7 +10,7 @@ body {
     line-height: 1.8;
     background-color: rgb(254, 250, 244);
     color: #4f3d33;
-    padding: 80px;
+    padding: 100px;
     margin: 0;
 }
 
@@ -19,12 +19,11 @@ section {
 }
 
 .container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
     padding: 0 80px;
 }
-
 .site-header {
     position: relative;
     z-index: 10; /* Ensures the title stays on top */
@@ -32,7 +31,7 @@ section {
 
 .site-header h1 {
     font-family: 'Orbitron', sans-serif;
-    font-size: 128px;
+    font-size: 144px;
     font-weight: bold;
     color: #5c5148;
     margin-bottom: 150px;
@@ -159,6 +158,12 @@ section {
     margin-top: 0px;
 }
 
+.header-image,
+    .bahnhof-image,
+    .footer-image {
+        max-width: 800px;
+    }
+
 /* Mobile Styling */
 @media (max-width: 768px) {
     body {
@@ -228,41 +233,5 @@ section {
         margin-top: 30px;
         left: 20%;
         z-index: 1;
-    }
-}
-
-/* Desktop large screens (wider than 1200px) */
-@media (min-width: 1200px) {
-    body {
-        padding: 100px;
-    }
-
-    .site-header h1 {
-        font-size: 144px;
-        margin-bottom: 150px;
-    }
-
-    .container {
-        max-width: 1200px;
-    }
-
-    .controls {
-        flex-direction: row;
-    }
-
-    .date-selector {
-        gap: 40px;
-        margin-bottom: 200px;
-    }
-
-    .conclusion h2 {
-        margin-top: 150px;
-        margin-bottom: 80px;
-    }
-
-    .header-image,
-    .bahnhof-image,
-    .footer-image {
-        max-width: 800px;
     }
 }
