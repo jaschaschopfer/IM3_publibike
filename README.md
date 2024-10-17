@@ -33,7 +33,7 @@ This data visualization project displays the distribution of e-bikes and regular
 
 # Attachements
 
-Chart Area and Height Profile (along yellow line)
+Chart Area and Sample Height Profile along yellow line
 
 ![image](https://github.com/user-attachments/assets/5d992ad9-b8e4-4876-b9da-7168c19a2738)
 
