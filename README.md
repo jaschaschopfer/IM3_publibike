@@ -19,7 +19,7 @@
 
 
 # Benutzte Ressourcen 
--
--
--
--
+- ChatGPT 4o
+- Stack OverFlow
+- MMP 101
+- Dozenten Coachings
