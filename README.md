@@ -9,12 +9,14 @@ This data visualization project displays the distribution of e-bikes and regular
 - loading to and unloading from our database
 - separating the steps into different PHP files
 - implementing libraries like chart.js, datepicker
-- data visualisation in end product can differ from prototype as with real data you may find out new things
+- data visualisation in end product can differ from prototype as with real data you may find out new things (we changed to sort by longitude instead of altitude, labeled the chart in a new way)
+- 
 
 
 # Challenges
 - CHATGPT VERLAUF ANSCHAUEN
-- Filters of chart had to be defined explicitly to not get dropped after changing time or date values 
+- Filters of chart had to be defined explicitly to not get dropped after changing time or date values:
+  - When fetching new data and updating the chart, initially the datasets (Velos and E-bikes) kept resetting their visibility state (toggling back on when they should have stayed off). It required learning how to store and reuse the hidden state of the datasets.
 - Set default date and time in 15min intervall when page is loaded needed more effort than expected
 - responsiveness of chart.js is difficult to understand: we could not get it to grow back when window gets big again after shrinking (not a usual usecase)
 
