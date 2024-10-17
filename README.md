@@ -14,7 +14,7 @@ This data visualization project displays the distribution of e-bikes and regular
 
 
 # Challenges
-- CHATGPT VERLAUF ANSCHAUEN
+- Handling Arrays and JSONs between files was not successfull first
 - Filters of chart had to be defined explicitly to not get dropped after changing time or date values:
   - When fetching new data and updating the chart, initially the datasets (Velos and E-bikes) kept resetting their visibility state (toggling back on when they should have stayed off). It required learning how to store and reuse the hidden state of the datasets.
 - Set default date and time in 15min intervall when page is loaded needed more effort than expected
