@@ -7,80 +7,106 @@
 
 body {
     font-family: 'League Spartan', sans-serif;
-    line-height: 1.8; /* Increases line spacing */
+    line-height: 1.8; /* Increased line spacing */
     background-color: rgb(254, 250, 244);
     color: #4f3d33;
-    padding: 40px; /* Adds more padding to the body */
+    padding: 80px; /* Adds even more padding to the body */
     margin: 0;
 }
 
 section {
-    margin: 80px 0; /* Adds more spacing between sections */
+    margin: 150px 0; /* Adds more space between sections */
 }
 
 .container {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    padding: 0 40px; /* Adds more padding to the container */
+    padding: 0 80px; /* Adds more padding to the container */
 }
 
 .site-header h1 {
-    font-family: 'Orbitron', sans-serif; /* Apply Orbitron font */
+    font-family: 'Orbitron', sans-serif;
     font-size: 128px;
     font-weight: bold;
     color: #5c5148;
-    margin-bottom: 80px; /* Adds more space under the title */
-    letter-spacing: -2px; /* Reduces the space between letters */
-    line-height: 0.9;     /* Reduces the vertical space between lines */
-    text-align: center;   /* Centers the text */
-    padding-top: 150px; /* Adds space above the header to move it down */
+    margin-bottom: 150px; /* Adds more space under the title */
+    letter-spacing: -2px;
+    line-height: 0.9;
+    text-align: center;
+    padding-top: 150px; /* Adds more space above the header */
+    position: relative; /* Ensure h1 and image are positioned relative */
+
+}
+
+.header-image {
+    width: 600px;
+    height: auto;
+    display: block;
+    margin-top: -90px; 
+    margin-left: 0;
+    position: relative;
+    left: 400px
+
 }
 
 .intro {
-    margin-bottom: 60px; /* Adds more space after the introduction */
+    margin-bottom: 150px; /* Increased spacing after the introduction */
     font-size: 18px;
+    margin-top:200px; 
 }
 
 .graph-section {
     width: 100%;
-    margin-bottom: 60px; /* Adds more space below the graph */
+    margin-bottom: 0; /* No extra space between graph and timeslider */
 }
 
 #altitudeChart {
-    width: 100%;   /* Set the specific width */
+    width: 100%;
 }
 
 .controls {
     display: flex;
     align-items: center;
-    width: 100%; /* Make the controls container full width */
-    max-width: 100%; /* Prevent overflow */
-    padding: 0; /* Remove any extra padding */
-    margin-bottom: 60px; /* Adds more space between controls and other elements */
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin-bottom: 0; /* No extra space between controls and graph */
 }
 
 .controls button {
     height: 40px;
     width: 40px;
-    flex-shrink: 0; /* Prevent shrinking of button */
+    flex-shrink: 0;
 }
 
 #time-slider {
     flex: 1;
     height: 40px;
-    width: 100%; /* Set slider width to 100% */
-    max-width: 100%; /* Prevent overflow */
-    margin: 0 20px; /* Adds more space between button and slider */
-    
+    width: 100%;
+    max-width: 100%;
+    margin: 0 30px;
+}
+
+.bahnhof-image {
+    width: 600px;
+    height: auto;
+    display: block;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding: 0; 
+    margin-left: 0;
+    position: relative;
+    left: -300px
+
 }
 
 .date-selector {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Adds more space between buttons */
-    margin-bottom: 80px; /* Adds more space after the date selector section */
+    gap: 30px;
+    margin-bottom: 150px; /* Adds more space after the date selector section */
 }
 
 .date-selector button {
@@ -91,50 +117,84 @@ section {
     cursor: pointer;
 }
 
+.analyzis h2 {
+    font-size: 32px; /* Similar heading size as conclusion */
+    font-weight: bold; /* Bold text */
+    color: #5c5148; /* Same color as conclusion */
+    margin-top: 200px; /* Adds significant space above the heading */
+    margin-bottom: 0px; /* No extra space below the heading */
+}
+
+.analyzis p {
+    margin-top: 0px; /* No extra space at the top of paragraph */
+    margin-bottom: 120px; /* Similar space under paragraphs as conclusion */
+    font-size: 18px; /* Same font size as in conclusion */
+}
+
+
 .conclusion h2 {
-    font-size: 32px; /* Larger font size for more emphasis */
+    font-size: 32px;
     font-weight: bold;
     color: #5c5148;
-    margin-bottom: 40px; /* Adds more space under the headings */
+    margin-top: 200px; /* Adds significantly more space above the conclusion heading */
+    margin-bottom: 0px; /* Adds more space under the headings */
 }
 
 .conclusion p {
-    margin-bottom: 40px; /* Adds more space under paragraphs */
+    margin-bottom: -100; /* Adds more space under paragraphs */
     font-size: 18px;
+    margin-top: 0px;
 }
 
+.footer-image {
+    width: 600px;
+    height: auto;
+    display: block;
+    margin-top: 0; 
+    margin-left: 0;
+    position: relative;
+    left: 400px
+}
+
+
+/* Mobile Styling */
 @media (max-width: 768px) {
     body {
-        padding: 20px; /* Less padding on mobile devices */
+        padding: 40px; /* Adds more padding on mobile devices */
     }
 
     .site-header h1 {
         font-size: 36px;
-        margin-bottom: 40px; /* More space on small screens */
+        margin-bottom: 100px; /* Adjusted spacing for mobile screens */
     }
 
     .container {
-        max-width: 100%; /* Allow the container to be fluid on small screens */
-        padding: 0 20px; /* Reduce padding */
+        max-width: 100%;
+        padding: 0 40px;
     }
 
     .controls {
-        width: 100%; /* Ensure full width of the controls container */
+        width: 100%;
         flex-direction: row;
-        padding: 0; /* Remove extra padding */
+        padding: 0;
     }
 
     #time-slider {
-        width: 100%; /* Make sure the slider takes full width on mobile */
-        margin: 0 10px; /* Adjust the margin for spacing */
+        width: 100%;
+        margin: 0 20px;
     }
 
     .date-selector {
-        gap: 10px; /* Less space between buttons on mobile devices */
-        margin-bottom: 40px; /* Smaller spacing on mobile devices */
+        gap: 20px;
+        margin-bottom: 80px;
     }
 
     .date-selector button {
-        margin: 5px 0; /* Space buttons better on small screens */
+        margin: 10px 0;
+    }
+
+    .conclusion h2 {
+        margin-top: 120px; /* More space on small screens above conclusion */
+        margin-bottom: 60px; /* Adjusted space below conclusion heading */
     }
 }
