@@ -7,22 +7,27 @@
 
 body {
     font-family: 'League Spartan', sans-serif;
-    line-height: 1.8; /* Increased line spacing */
+    line-height: 1.8;
     background-color: rgb(254, 250, 244);
     color: #4f3d33;
-    padding: 80px; /* Adds even more padding to the body */
+    padding: 80px;
     margin: 0;
 }
 
 section {
-    margin: 150px 0; /* Adds more space between sections */
+    margin: 150px 0;
 }
 
 .container {
     max-width: 900px;
     margin: 0 auto;
     text-align: center;
-    padding: 0 80px; /* Adds more padding to the container */
+    padding: 0 80px;
+}
+
+.site-header {
+    position: relative;
+    z-index: 10; /* Ensures the title stays on top */
 }
 
 .site-header h1 {
@@ -30,35 +35,57 @@ section {
     font-size: 128px;
     font-weight: bold;
     color: #5c5148;
-    margin-bottom: 150px; /* Adds more space under the title */
+    margin-bottom: 150px;
     letter-spacing: -2px;
     line-height: 0.9;
     text-align: center;
-    padding-top: 150px; /* Adds more space above the header */
-    position: relative; /* Ensure h1 and image are positioned relative */
-
+    padding-top: 150px;
+    z-index: 10; /* Ensure title stays on top */
+    position: relative; /* Ensure it stays positioned correctly */
 }
 
 .header-image {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
     height: auto;
     display: block;
-    margin-top: -90px; 
-    margin-left: 0;
+    margin-top: 30px; /* Move the image further down to avoid overlap with the title */
     position: relative;
-    left: 400px
+    left: 400px;
+    z-index: 1; /* Ensure the image is below the title */
+}
 
+.bahnhof-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin-top: 30px;
+    position: relative;
+    left: -300px;
+    z-index: 1; /* Ensure the image stays below other content */
+}
+
+.footer-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin-top: 30px; /* Add margin to ensure it's not too close to other elements */
+    position: relative;
+    left: 400px;
+    z-index: 1; /* Ensure it stays under the content */
 }
 
 .intro {
-    margin-bottom: 150px; /* Increased spacing after the introduction */
+    margin-bottom: 150px;
     font-size: 18px;
-    margin-top:200px; 
+    margin-top: 200px;
 }
 
 .graph-section {
     width: 100%;
-    margin-bottom: 0; /* No extra space between graph and timeslider */
+    margin-bottom: 0;
 }
 
 #altitudeChart {
@@ -71,7 +98,7 @@ section {
     width: 100%;
     max-width: 100%;
     padding: 0;
-    margin-bottom: 0; /* No extra space between controls and graph */
+    margin-bottom: 0;
 }
 
 .controls button {
@@ -88,25 +115,12 @@ section {
     margin: 0 30px;
 }
 
-.bahnhof-image {
-    width: 600px;
-    height: auto;
-    display: block;
-    margin-top: 30px;
-    margin-bottom: 0;
-    padding: 0; 
-    margin-left: 0;
-    position: relative;
-    left: -300px
-
-}
-
 .date-selector {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-bottom: 150px; /* Adds more space after the date selector section */
+    margin-bottom: 150px;
 }
 
 .date-selector button {
@@ -118,64 +132,54 @@ section {
 }
 
 .analyzis h2 {
-    font-size: 32px; /* Similar heading size as conclusion */
-    font-weight: bold; /* Bold text */
-    color: #5c5148; /* Same color as conclusion */
-    margin-top: 200px; /* Adds significant space above the heading */
-    margin-bottom: 0px; /* No extra space below the heading */
+    font-size: 32px;
+    font-weight: bold;
+    color: #5c5148;
+    margin-top: 200px;
+    margin-bottom: 0px;
 }
 
 .analyzis p {
-    margin-top: 0px; /* No extra space at the top of paragraph */
-    margin-bottom: 120px; /* Similar space under paragraphs as conclusion */
-    font-size: 18px; /* Same font size as in conclusion */
+    margin-top: 0px;
+    margin-bottom: 120px;
+    font-size: 18px;
 }
-
 
 .conclusion h2 {
     font-size: 32px;
     font-weight: bold;
     color: #5c5148;
-    margin-top: 200px; /* Adds significantly more space above the conclusion heading */
-    margin-bottom: 0px; /* Adds more space under the headings */
+    margin-top: 200px;
+    margin-bottom: 0px;
 }
 
 .conclusion p {
-    margin-bottom: -100; /* Adds more space under paragraphs */
+    margin-bottom: -100;
     font-size: 18px;
     margin-top: 0px;
 }
 
-.footer-image {
-    width: 600px;
-    height: auto;
-    display: block;
-    margin-top: 0; 
-    margin-left: 0;
-    position: relative;
-    left: 400px
-}
-
-
 /* Mobile Styling */
 @media (max-width: 768px) {
     body {
-        padding: 40px; /* Adds more padding on mobile devices */
+        padding: 20px;
     }
 
     .site-header h1 {
-        font-size: 36px;
-        margin-bottom: 100px; /* Adjusted spacing for mobile screens */
+        font-size: 64px; /* Larger font size for mobile */
+        margin-bottom: 30px;
+        padding-top: 20px;
+        line-height: 1;
     }
 
     .container {
         max-width: 100%;
-        padding: 0 40px;
+        padding: 0 20px;
     }
 
     .controls {
         width: 100%;
-        flex-direction: row;
+        flex-direction: column;
         padding: 0;
     }
 
@@ -194,7 +198,71 @@ section {
     }
 
     .conclusion h2 {
-        margin-top: 120px; /* More space on small screens above conclusion */
-        margin-bottom: 60px; /* Adjusted space below conclusion heading */
+        margin-top: 120px;
+        margin-bottom: 60px;
+    }
+
+    /* Mobile adjustments for images */
+    .header-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 30px; /* Ensure image is below the title */
+        left: 20%; /* Keep similar alignment for mobile */
+        z-index: 1; /* Ensure the image stays behind the title */
+    }
+
+    .bahnhof-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 30px;
+        left: -20%;
+        z-index: 1;
+    }
+
+    .footer-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 30px;
+        left: 20%;
+        z-index: 1;
+    }
+}
+
+/* Desktop large screens (wider than 1200px) */
+@media (min-width: 1200px) {
+    body {
+        padding: 100px;
+    }
+
+    .site-header h1 {
+        font-size: 144px;
+        margin-bottom: 150px;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+
+    .controls {
+        flex-direction: row;
+    }
+
+    .date-selector {
+        gap: 40px;
+        margin-bottom: 200px;
+    }
+
+    .conclusion h2 {
+        margin-top: 150px;
+        margin-bottom: 80px;
+    }
+
+    .header-image,
+    .bahnhof-image,
+    .footer-image {
+        max-width: 800px;
     }
 }
