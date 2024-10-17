@@ -19,6 +19,7 @@ This data visualization project displays the distribution of e-bikes and regular
   - When fetching new data and updating the chart, initially the datasets (Velos and E-bikes) kept resetting their visibility state (toggling back on when they should have stayed off). It required learning how to store and reuse the hidden state of the datasets.
 - Set default date and time in 15min intervall when page is loaded needed more effort than expected
 - responsiveness of chart.js is difficult to understand: we could not get it to grow back when window gets big again after shrinking (not a usual usecase)
+- In general: libraries are efficient but often not as flexible as own solutions. Sometimes we had to code for a long time to receive the desired results in our chart
 
 
 # Tools Used 
