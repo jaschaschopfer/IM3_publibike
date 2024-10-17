@@ -184,7 +184,6 @@ function fetchData() {
                             label: 'Velos',
                             backgroundColor: 'rgba(107, 142, 35, 0.5)', // Green with 40% transparency
                             borderColor: 'rgba(107, 142, 35, 0.1)', // Green border
-                            zIndex: 0,
                             data: velosData,
                             hidden: false // Default visibility
                         },
@@ -192,7 +191,6 @@ function fetchData() {
                             label: 'E-Bikes',
                             backgroundColor: 'rgba(255, 215, 0, 0.5)', // Yellow with 40% transparency
                             borderColor: 'rgba(255, 215, 0, 0.1)', // Yellow border
-                            zIndex: 1,
                             data: ebikesData,
                             hidden: false // Default visibility
                         }
