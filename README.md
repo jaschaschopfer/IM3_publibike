@@ -2,6 +2,7 @@
 This data visualization project displays the distribution of e-bikes and regular bikes across various Publibike stations in Bern, organized in a south-north axis by elevation levels. It tracks how the bikes are spread across the city over time, showing whether e-bikes tend to accumulate at higher elevations and regular bikes at lower ones. The analysis also proposes solutions, such as dynamic pricing, to encourage better distribution of bikes. By offering discounts for certain routes, Publibike could save on logistics and improve user experience.
 
 Scan Area:
+
 <img width="428" alt="image" src="https://github.com/user-attachments/assets/590e99f5-701d-48f8-9b41-a7c6fd19001d">
 
 
